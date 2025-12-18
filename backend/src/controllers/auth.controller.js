@@ -1,8 +1,9 @@
+const bcrypt = require("bcryptjs");
 const User = require("../models/user.model");
 const jwtService = require("../services/jwt.service");
 
 
-// signup logic (#TODO: add hashing)
+// signup logic 
 exports.signup = async (req, res) => {
 
     const { email, password } = req.body;
@@ -13,9 +14,12 @@ exports.signup = async (req, res) => {
         return req.status(400).json({ message: "User already exists" });
     }
 
+    // password hashing done here
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     const user = await User.create({
         email,
-        password,
+        password: hashedPassword,
     });
 
     const token = jwtService.generateToken({
@@ -29,7 +33,7 @@ exports.signup = async (req, res) => {
     });
 };
 
-// login logic (#TODO: add hashing)
+// login logic
 exports.login = async (req, res) => {
 
     const { email, password } = req.body;
@@ -40,8 +44,10 @@ exports.login = async (req, res) => {
         return req.status(401).json({ message: "Invalid credentials" });
     }
 
-    if (user.password != password) {
-        return req.status(401).json({ message: "Invalid credentials" });
+    // password verification is done here
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+        return res.status(401).json({ message: "Invalid credentials" });
     }
 
     const token = jwtService.generateToken({
