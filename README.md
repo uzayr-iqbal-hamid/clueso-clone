@@ -40,5 +40,18 @@ These are documented but not fully implemented to maintain focus on core workflo
 
 ---
 
-## Project Structure
+## Backend Architecture
+- Express + MongoDB
+- JWT-based authentication
+- Clear separation of routes, controllers, services
+
+## Project Lifecycle
+created → processing → ready
+
+## Mock AI Processing
+AI generation is simulated via a mock service that:
+- waits asynchronously
+- generates fake video URLs
+- generates step-by-step documentation
+
 
