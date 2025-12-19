@@ -1,39 +1,66 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { NavLink } from "react-router-dom";
+import {
+  Home,
+  Folder,
+  Video,
+  Zap,
+  Users,
+  BarChart3,
+  Settings,
+  Trash2,
+} from "lucide-react";
+
 import "../styles/sidebar.css";
 
+const mainMenu = [
+  { label: "Home", icon: Home, to: "/app" },
+  { label: "All Projects", icon: Folder, to: "/app/projects" },
+  { label: "Video Templates", icon: Video, to: "/app/templates" },
+  { label: "Auto-update", icon: Zap, to: "/app/auto" },
+  { label: "Team", icon: Users, to: "/app/team" },
+  { label: "Analytics", icon: BarChart3, to: "/app/analytics" },
+];
+
+const bottomMenu = [
+  { label: "Settings", icon: Settings, to: "/app/settings" },
+  { label: "Trash", icon: Trash2, to: "/app/trash" },
+];
+
 export default function Sidebar() {
-  const { logout } = useAuth();
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
-
-  const isActive = (path) => location.pathname === path;
-
   return (
     <aside className="sidebar">
-      <h2 className="logo">Clueso</h2>
+      {/* Logo */}
+      <div className="sidebar-logo">Clueso</div>
 
-      <div className="sidebar-section">
-        <p className="section-title">Workspace</p>
-        <Link className={isActive("/") ? "active" : ""} to="/">
-          Home
-        </Link>
-      </div>
+      {/* Main menu */}
+      <nav className="sidebar-menu">
+        {mainMenu.map(({ label, icon: Icon, to }) => (
+          <NavLink
+            key={label}
+            to={to}
+            className={({ isActive }) =>
+              `sidebar-item ${isActive ? "active" : ""}`
+            }
+          >
+            <Icon size={18} />
+            <span>{label}</span>
+          </NavLink>
+        ))}
+      </nav>
 
-      <div className="sidebar-section">
-        <p className="section-title">Management</p>
-        <span className="disabled">Team (coming soon)</span>
-        <span className="disabled">Analytics (coming soon)</span>
-      </div>
-
-      <button className="logout-btn" onClick={handleLogout}>
-        Logout
-      </button>
+      {/* Bottom menu */}
+      <nav className="sidebar-footer">
+        {bottomMenu.map(({ label, icon: Icon, to }) => (
+          <NavLink
+            key={label}
+            to={to}
+            className="sidebar-item"
+          >
+            <Icon size={18} />
+            <span>{label}</span>
+          </NavLink>
+        ))}
+      </nav>
     </aside>
   );
 }

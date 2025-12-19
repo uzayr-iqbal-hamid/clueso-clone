@@ -1,24 +1,26 @@
+import { Link } from "react-router-dom";
+
 export default function Hero() {
   return (
     <section className="hero">
-      <div className="hero-left">
-        <h1>
-          Product videos <br />
-          <span>in minutes with AI</span>
-        </h1>
+      <h1>
+        Turn screen recordings into
+        <br />
+        <span>videos & documentation</span>
+      </h1>
 
-        <p>
-          Transform raw screen recordings into stunning videos & documentation.
-        </p>
+      <p>
+        Clueso helps teams instantly create product videos and step-by-step
+        guides using AI — no editing required.
+      </p>
 
-        <div className="hero-actions">
-          <button className="primary">Start Free Trial</button>
-          <button className="secondary">Book a Demo</button>
-        </div>
-      </div>
-
-      <div className="hero-right">
-        <div className="hero-mock" />
+      <div className="hero-actions">
+        <Link to="/signup" className="btn-primary">
+          Get started free
+        </Link>
+        <Link to="/login" className="btn-outline">
+          View demo
+        </Link>
       </div>
     </section>
   );

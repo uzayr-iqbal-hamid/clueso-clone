@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { apiRequest } from "../services/api";
 import { useAuth } from "../context/AuthContext";
 import Sidebar from "../components/Sidebar";
+
 import "../styles/dashboard.css";
 
 export default function ProjectDetail() {
@@ -29,7 +30,7 @@ export default function ProjectDetail() {
     setLoading(false);
   };
 
-  if (!project) return <p>Loading...</p>;
+  // if (!project) return <p>Loading...</p>;
 
   return (
   <div className="layout">

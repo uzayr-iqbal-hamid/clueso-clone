@@ -1,23 +1,18 @@
-import "./navbar.css";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <header className="navbar">
-      <div className="navbar-left">
-        <span className="logo">Clueso</span>
-        <nav>
-          <a>Product</a>
-          <a>Resources</a>
-          <a>Pricing</a>
-          <a>Careers</a>
-        </nav>
-      </div>
+    <nav className="navbar">
+      <div className="navbar-logo">Clueso</div>
 
-      <div className="navbar-right">
-        <Link to="/login">Sign In</Link>
-        <Link to="/signup" className="cta">Start Free Trial</Link>
+      <div className="navbar-actions">
+        <Link to="/login" className="btn-secondary">
+          Login
+        </Link>
+        <Link to="/signup" className="btn-primary">
+          Sign up
+        </Link>
       </div>
-    </header>
+    </nav>
   );
 }

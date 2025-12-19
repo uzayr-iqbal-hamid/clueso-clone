@@ -1,49 +1,61 @@
 .sidebar {
-  width: 220px;
-  background: #ffffff;
-  border-right: 1px solid #e5e7eb;
-  padding: 20px;
+  width: 240px;
+  height: 100vh;
+  background: rgb(17, 18, 30); /* #11121e */
+  color: #b1b5c9;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  padding: 20px 12px;
+  position: fixed;
+  left: 0;
+  top: 0;
 }
 
-.logo {
+/* Logo */
+.sidebar-logo {
   font-size: 20px;
   font-weight: 700;
+  color: white;
+  margin-bottom: 24px;
 }
 
-.sidebar-section {
+/* Top menu */
+.sidebar-menu {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-.section-title {
-  font-size: 12px;
-  text-transform: uppercase;
-  color: #64748b;
-  margin-bottom: 4px;
+/* Bottom menu pinned */
+.sidebar-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: auto; /* 🔥 THIS is the key */
 }
 
-.sidebar a {
-  padding: 8px 10px;
-  border-radius: 6px;
-  color: #0f172a;
-}
-
-.sidebar a.active,
-.sidebar a:hover {
-  background: #eef2ff;
-}
-
-.disabled {
-  padding: 8px 10px;
+/* Items */
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #888b9c;
+  text-decoration: none;
   font-size: 14px;
-  color: #94a3b8;
 }
 
-.logout-btn {
-  margin-top: auto;
-  background: #ef4444;
+.sidebar-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: white;
+}
+
+.sidebar-item.active {
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+}
+
+.sidebar-item svg {
+  stroke-width: 1.5;
 }
