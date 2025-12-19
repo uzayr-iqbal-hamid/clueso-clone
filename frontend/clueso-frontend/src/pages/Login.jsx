@@ -1,3 +1,6 @@
+import "../styles/auth.css";
+import { Link } from "react-router-dom";
+
 import { useState } from "react";
 import { apiRequest } from "../services/api";
 import { useAuth } from "../context/AuthContext";
@@ -26,7 +29,7 @@ export default function Login() {
       console.log("Login response:", data);
 
       login(data.token);
-      navigate("/");
+      navigate("/app");
     } catch (err) {
       console.error("Login error:", err.message);
       setError(err.message);
@@ -34,25 +37,26 @@ export default function Login() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Login</h2>
+    <div className="auth-container">
+        <div className="auth-card">
+            <h2>Login</h2>
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
+            {error && <p style={{ color: "red" }}>{error}</p>}
 
-      <input
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+            <form onSubmit={handleSubmit}>
+                <input placeholder="Email" value={email}
+                    onChange={e => setEmail(e.target.value)} />
 
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+                <input type="password" placeholder="Password" value={password}
+                    onChange={e => setPassword(e.target.value)} />
 
-      <button type="submit">Login</button>
-    </form>
+                <button type="submit">Login</button>
+            </form>
+
+            <div className="auth-footer">
+                Don’t have an account? <Link to="/signup">Sign up</Link>
+            </div>
+        </div>
+    </div>
   );
 }

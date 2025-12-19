@@ -1,0 +1,37 @@
+.navbar {
+  height: 64px;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.navbar nav {
+  display: flex;
+  gap: 24px;
+  color: var(--text-muted);
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.navbar-right {
+  display: flex;
+  gap: 16px;
+}
+
+.cta {
+  background: var(--primary);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+}

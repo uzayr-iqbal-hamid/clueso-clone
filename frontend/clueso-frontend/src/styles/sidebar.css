@@ -1,0 +1,49 @@
+.sidebar {
+  width: 220px;
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.sidebar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.section-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+
+.sidebar a {
+  padding: 8px 10px;
+  border-radius: 6px;
+  color: #0f172a;
+}
+
+.sidebar a.active,
+.sidebar a:hover {
+  background: #eef2ff;
+}
+
+.disabled {
+  padding: 8px 10px;
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+.logout-btn {
+  margin-top: auto;
+  background: #ef4444;
+}

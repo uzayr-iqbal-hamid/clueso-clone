@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { apiRequest } from "../services/api";
 import { useAuth } from "../context/AuthContext";
+import Sidebar from "../components/Sidebar";
+import "../styles/dashboard.css";
 
 export default function ProjectDetail() {
   const { id } = useParams();
@@ -30,29 +32,50 @@ export default function ProjectDetail() {
   if (!project) return <p>Loading...</p>;
 
   return (
-    <div>
-      <h1>{project.title}</h1>
-      <p>Status: {project.status}</p>
+  <div className="layout">
+    <Sidebar />
 
-      {project.status !== "ready" && (
-        <button onClick={processProject} disabled={loading}>
-          {loading ? "Processing..." : "Process with AI"}
-        </button>
-      )}
-
-      {content && (
+    <main className="content">
+      {!project ? (
+        <p>Loading project...</p>
+      ) : (
         <>
-          <h2>Video</h2>
-          <video controls src={content.videoUrl} />
+          <h1>{project.title}</h1>
+          <p>Status: <strong>{project.status}</strong></p>
 
-          <h2>Steps</h2>
-          <ol>
-            {content.steps.map(s => (
-              <li key={s.stepNumber}>{s.text}</li>
-            ))}
-          </ol>
+          {project.status !== "ready" && (
+            <button
+              onClick={processProject}
+              disabled={loading}
+              style={{ margin: "20px 0" }}
+            >
+              {loading ? "Processing..." : "Process with AI"}
+            </button>
+          )}
+
+          {content && (
+            <div style={{ marginTop: "30px" }}>
+              <h2>Generated Video</h2>
+              <video
+                controls
+                src={content.videoUrl}
+                style={{ width: "100%", borderRadius: "8px" }}
+              />
+
+              <h2 style={{ marginTop: "30px" }}>Step-by-step Documentation</h2>
+              <ol>
+                {content.steps.map((step) => (
+                  <li key={step.stepNumber} style={{ marginBottom: "8px" }}>
+                    {step.text}
+                  </li>
+                ))}
+              </ol>
+            </div>
+          )}
         </>
       )}
-    </div>
-  );
+    </main>
+  </div>
+);
+
 }

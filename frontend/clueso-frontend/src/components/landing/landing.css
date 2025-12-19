@@ -1,0 +1,46 @@
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  padding: 80px 60px;
+  gap: 40px;
+}
+
+.hero h1 {
+  font-size: 52px;
+  line-height: 1.1;
+}
+
+.hero h1 span {
+  color: var(--text-muted);
+}
+
+.hero p {
+  margin-top: 20px;
+  font-size: 18px;
+  color: var(--text-muted);
+}
+
+.hero-actions {
+  margin-top: 32px;
+  display: flex;
+  gap: 16px;
+}
+
+.primary {
+  background: var(--primary);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+}
+
+.secondary {
+  border: 1px solid var(--border-light);
+  padding: 12px 20px;
+  border-radius: 10px;
+}
+
+.hero-mock {
+  height: 360px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #fbcfe8, #e9d5ff);
+}
